@@ -92,9 +92,6 @@ app.get('/read' , async (req , res) => {
     })
 });
 
-if (process.env.NODE_ENV === 'production') {
-
-}
 
 app.listen(PORT, () => {
     console.log(`Server up and running at port ${PORT}`)
