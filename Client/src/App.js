@@ -13,21 +13,24 @@ function App() {
   
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/read').then((response) => {
+    Axios.get('https://mern-crud-zuri.herokuapp.com/read').then((response) => {
       setContactList(response.data);
     })
   }, [])
 
   const addToList = () => {
-    Axios.post('http://localhost:3001/insert' , {
+    alert('Contact Details Submitted');
+    Axios.post('https://mern-crud-zuri.herokuapp.com/insert' , {
       Name: name,
       Email: email,
       Country: country
     });
+    
+    window.location.reload();
   };
 
    const updateName = (id) => {
-     Axios.put('http://localhost:3001/updateName', {
+     Axios.put('https://mern-crud-zuri.herokuapp.com/updateName', {
        id: id,
        newName: newName
      })
@@ -35,7 +38,7 @@ function App() {
    }
 
   const updateMail = (id) => {
-    Axios.put('http://localhost:3001/updateMail', {
+    Axios.put('https://mern-crud-zuri.herokuapp.com/updateMail', {
        id: id,
        newName: newName
      })
@@ -43,7 +46,7 @@ function App() {
   }
 
   const updateCountry = (id) => {
-    Axios.put('http://localhost:3001/updateCountry', {
+    Axios.put('https://mern-crud-zuri.herokuapp.com/updateCountry', {
        id: id,
        newName: newName
      })
@@ -51,7 +54,8 @@ function App() {
   }
 
   const deleteContact = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`)
+    Axios.delete(`https://mern-crud-zuri.herokuapp.com/delete/${id}`)
+    window.location.reload();
   }
  
 
@@ -77,7 +81,7 @@ function App() {
           }/>
 
       <br/>
-      <button onClick = {addToList}>Submit</button>
+      <button onClick = {addToList} >Submit</button>
       
       <h1>Details submitted</h1>
 
