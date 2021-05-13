@@ -48,25 +48,6 @@
 
   None
 
-**Update Email**
-----
-  Updates Email
-
-* **URL**
-
-  /updateMail
-
-* **Method:**
-
-  `PUT`
-  
-*  **URL Params**
-
-    None
-
-* **Data Params**
-
-  None
 
 **Update Name**
 ----
