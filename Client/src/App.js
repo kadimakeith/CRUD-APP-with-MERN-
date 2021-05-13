@@ -6,7 +6,9 @@ function App() {
   const [name, setName] = useState('');  
   const [email, setMail] = useState('');
   const [country, setCountry] = useState('');
-  const [newFoodName, setNewFoodName] = useState('');
+  const [newName, setNewName] = useState('');
+  const [newMail, setNewMail] = useState('');
+  const [newCountry, setNewCountry] = useState('');
   const [contactList, setContactList] = useState([]);
   
 
@@ -23,6 +25,35 @@ function App() {
       Country: country
     });
   };
+
+   const updateName = (id) => {
+     Axios.put('http://localhost:3001/updateName', {
+       id: id,
+       newName: newName
+     })
+
+   }
+
+  const updateMail = (id) => {
+    Axios.put('http://localhost:3001/updateMail', {
+       id: id,
+       newName: newName
+     })
+
+  }
+
+  const updateCountry = (id) => {
+    Axios.put('http://localhost:3001/updateCountry', {
+       id: id,
+       newName: newName
+     })
+
+  }
+
+  const deleteContact = (id) => {
+    Axios.delete(`http://localhost:3001/delete/${id}`)
+  }
+ 
 
   return (
     <div className="App">
@@ -47,38 +78,49 @@ function App() {
 
       <br/>
       <button onClick = {addToList}>Submit</button>
+      
       <h1>Details submitted</h1>
 
-      {contactList.map((val , key) =>{
+         {contactList.map((val , key) =>{
         return(
           <div key = {key}>
-            <h1> {val.Name} </h1> <h1> {val.Country} </h1> <h1>{val.Email}</h1>
-
+            <label>Name:</label>
+            <h3> {val.Name} </h3>
+                        
+            <label>Country:</label>
+            <h3> {val.Country} </h3>
+            
+            <label>E-mail:</label> 
+            <h3>{val.Email}</h3>
+            
             <input 
             type='text' 
             placeholder='Name'
             onChange = {(event) =>
-            {setNewFoodName(event.target.value)}
+            {setNewName(event.target.value)}
              }/>
 
-            <button> Update </button> 
+            <button onClick={() => updateName(val._id)}> Update </button> 
             <input 
             type='text' 
             placeholder='E-mail'
             onChange = {(event) =>
-            {setNewFoodName(event.target.value)}
+            {setNewMail(event.target.value)}
              }/> 
 
-            <button> Update </button>
+            <button onClick={() => updateMail(val._id)}> Update </button>
             <input 
             type='text' 
             placeholder='Country'
             onChange = {(event) =>
-            {setNewFoodName(event.target.value)}
+            {setNewCountry(event.target.value)}
              }/>
 
-            <button> Update </button>
-            <button> Delete </button>
+            <button onClick={() => updateCountry(val._id)}> Update </button>
+            <br/>
+
+            <button onClick ={() => deleteContact(val._id)}> Delete </button>
+            
           </div>  
 
         )
@@ -86,5 +128,9 @@ function App() {
     </div>
   );
 }
+    
+
+          
+     
 
 export default App;
