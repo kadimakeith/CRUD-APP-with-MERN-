@@ -1,10 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
-const Food = require('./Models/food');
+const contact = require('./Models/Contact.js');
 const cors = require('cors');
 const app = express();
 
-const FoodModel = require('./Models/food') 
 const PORT = process.env.PORT || 3001; 
 
 app.use(express.json())
@@ -15,19 +14,20 @@ mongoose.connect( process.env.MONGODB_URI || 'mongodb+srv://kadimak:playstation2
 } )
 
 app.post('/insert' , async (req , res) => {
-    const foodName = req.body.foodName;
-    const days = req.body.days;
-    const Food = new FoodModel({ foodName: foodName, daysSinceIAte: days})
+    const name = req.body.Name;
+    const email = req.body.Email;
+    const country = req.body.Country;
+    const cont = new contact({ Name: name, Country: country, Email: email})
 
     try{
-        await Food.save();
+        await cont.save();
     } catch (err) {
         console.log(err)
     }
 });
 
 app.get('/read' , async (req , res) => {
-    FoodModel.find({}, (err, result) => {
+    contact.find({}, (err, result) => {
         if(err){
             res.send(err)
         }

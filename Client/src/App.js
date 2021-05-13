@@ -3,8 +3,9 @@ import Axios from 'axios';
 import './App.css';
 
 function App() {
-  const [foodName, setFoodName] = useState('');  
-  const [days, setDays] = useState(0);
+  const [name, setName] = useState('');  
+  const [email, setMail] = useState('');
+  const [country, setCountry] = useState('');
   const [newFoodName, setNewFoodName] = useState('');
   const [foodList, setFoodList] = useState([]);
   
@@ -17,29 +18,36 @@ function App() {
 
   const addToList = () => {
     Axios.post('http://localhost:3001/insert' , {
-      foodName: foodName,
-      days: days,
+      Name: name,
+      Email: email,
+      Country: country
     });
   };
 
   return (
     <div className="App">
-      <h1>Zuri Training</h1>
-      <h2>CRUD APP WITH MERN</h2>
+      <h1>Data Collection</h1>
+      <h2>Enter your details below</h2>
 
-      <label>Food: </label>
+      <label> Name: </label>
       <input type='text' onChange ={(event) =>
-         {setFoodName(event.target.value)}
+         {setName(event.target.value)}
           } /> 
 
 
-      <label> Days since I ate: </label>
-      <input type='number' onChange ={(event) =>
-         {setDays(event.target.value)}
+      <label> E-mail: </label>
+      <input type='text' onChange ={(event) =>
+         {setMail(event.target.value)}
           }/>
+
+      <label> Country: </label>
+      <input type='text' onChange ={(event) =>
+         {setMail(event.target.value)}
+          }/>
+
       <br/>
       <button onClick = {addToList}>Submit</button>
-      <h1>Food list</h1>
+      <h1>Details submitted</h1>
 
       {foodList.map((val , key) =>{
         return(
