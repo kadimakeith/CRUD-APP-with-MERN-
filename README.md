@@ -1,8 +1,4 @@
 
-Coming Soon!!
-
-ps. Please Give Me some few extra hours to finish it up. I started the task a little bit close to the deadline. A day will do. Check back Tomorrow. Thanks in advance. 
-
 **Show Data submitted**
 ----
   Returns json data about data submitted.
@@ -109,3 +105,25 @@ ps. Please Give Me some few extra hours to finish it up. I started the task a li
 * **Data Params**
 
   None
+
+**Insert Data**
+----
+ Inserts Data
+
+* **URL**
+
+  /insert
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+    None
+
+* **Data Params**
+
+  None
+
+ [Click here to access the deployed site](https://dazzling-brattain-b8bb39.netlify.app/)
