@@ -7,12 +7,12 @@ function App() {
   const [email, setMail] = useState('');
   const [country, setCountry] = useState('');
   const [newFoodName, setNewFoodName] = useState('');
-  const [foodList, setFoodList] = useState([]);
+  const [contactList, setContactList] = useState([]);
   
 
   useEffect(() => {
     Axios.get('http://localhost:3001/read').then((response) => {
-      setFoodList(response.data);
+      setContactList(response.data);
     })
   }, [])
 
@@ -42,19 +42,37 @@ function App() {
 
       <label> Country: </label>
       <input type='text' onChange ={(event) =>
-         {setMail(event.target.value)}
+         {setCountry(event.target.value)}
           }/>
 
       <br/>
       <button onClick = {addToList}>Submit</button>
       <h1>Details submitted</h1>
 
-      {foodList.map((val , key) =>{
+      {contactList.map((val , key) =>{
         return(
           <div key = {key}>
-            <h1> {val.foodName} </h1> <h1> {val.daysSinceIAte} </h1>
+            <h1> {val.Name} </h1> <h1> {val.Country} </h1> <h1>{val.Email}</h1>
 
-            <input type='text' 
+            <input 
+            type='text' 
+            placeholder='Name'
+            onChange = {(event) =>
+            {setNewFoodName(event.target.value)}
+             }/>
+
+            <button> Update </button> 
+            <input 
+            type='text' 
+            placeholder='E-mail'
+            onChange = {(event) =>
+            {setNewFoodName(event.target.value)}
+             }/> 
+
+            <button> Update </button>
+            <input 
+            type='text' 
+            placeholder='Country'
             onChange = {(event) =>
             {setNewFoodName(event.target.value)}
              }/>
