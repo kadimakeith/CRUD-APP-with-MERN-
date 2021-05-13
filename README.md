@@ -1,4 +1,6 @@
 
+![Preview](Preview.jpg)
+
 **Show Data submitted**
 ----
   Returns json data about data submitted.
